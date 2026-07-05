@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const bcrypt = require('bcryptjs');
 const connectDB = require('./config/database');
 const authRoutes = require('./routes/auth');
 const User = require('./models/User');
@@ -41,6 +42,12 @@ const initializeDatabase = async () => {
           ruolo: 'admin'
         }
       ];
+
+      // Hash passwords before inserting
+      for (let user of testUsers) {
+        const salt = await bcrypt.genSalt(10);
+        user.password = await bcrypt.hash(user.password, salt);
+      }
 
       await User.insertMany(testUsers);
       console.log('✅ Database seeded successfully!');
