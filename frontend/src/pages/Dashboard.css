@@ -1,0 +1,60 @@
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.dashboard-container h1 {
+  color: #2c3e50;
+  margin-bottom: 2rem;
+}
+
+.welcome-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-card h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.welcome-card p {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.dashboard-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-content h3 {
+  color: #2c3e50;
+  margin-top: 0;
+}
+
+.dashboard-content p {
+  color: #666;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 1rem;
+  }
+
+  .welcome-card {
+    padding: 1.5rem;
+  }
+
+  .dashboard-content {
+    padding: 1.5rem;
+  }
+}
