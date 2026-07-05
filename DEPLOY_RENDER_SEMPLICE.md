@@ -4,8 +4,8 @@ Questa guida ti farà deployare il template su **Render in 10 minuti**.
 Quando finisci, avrai il sito live con dati di test pronti per l'esame.
 
 **URL che avrai:**
-- Frontend: `https://app-davide-aselladavide.onrender.com`
-- Backend: `https://app-davide-aselladavide-backend.onrender.com/api`
+- Frontend: `https://app-davide-iasella.onrender.com`
+- Backend: `https://app-davide-iasella-backend.onrender.com/api`
 
 ---
 
@@ -68,7 +68,7 @@ Aspetta che finisca (vedrai righe di output).
 Apparirà una form. Compila così:
 
 ```
-Name: app-davide-aselladavide-backend
+Name: app-davide-iasella-backend
 Environment: Node
 Region: (lascia il default, es. Frankfurt)
 Branch: main
@@ -83,14 +83,14 @@ MONGODB_URI = mongodb+srv://iasella_db_user:557QmUu5NBy45ex9@camposportivodataba
 JWT_SECRET = esame_secret_key_2024
 PORT = 8000
 NODE_ENV = production
-FRONTEND_URL = https://app-davide-aselladavide.onrender.com
+FRONTEND_URL = https://app-davide-iasella.onrender.com
 ```
 
 Clicca **"Create Web Service"**.
 
 Aspetta il deploy (2-3 minuti). Vedrai una schermata con l'URL quando è finito.
 
-**Salva questo URL**: `https://app-davide-aselladavide-backend.onrender.com`
+**Salva questo URL**: `https://app-davide-iasella-backend.onrender.com`
 
 ---
 
@@ -108,7 +108,7 @@ Aspetta il deploy (2-3 minuti). Vedrai una schermata con l'URL quando è finito.
 Compila così:
 
 ```
-Name: app-davide-aselladavide
+Name: app-davide-iasella
 Environment: (lascia blank)
 Build Command: cd frontend && npm install && npm run build
 Publish directory: frontend/build
@@ -126,7 +126,7 @@ Aspetta il deploy (1-2 minuti).
 4. Aggiungi:
    ```
    Name: REACT_APP_API_URL
-   Value: https://app-davide-aselladavide-backend.onrender.com/api
+   Value: https://app-davide-iasella-backend.onrender.com/api
    ```
 5. Clicca **"Save"**
 
@@ -164,8 +164,8 @@ Adesso hai:
 Salva questi URL da qualche parte:
 
 ```
-Frontend: https://app-davide-aselladavide.onrender.com
-Backend: https://app-davide-aselladavide-backend.onrender.com/api
+Frontend: https://app-davide-iasella.onrender.com
+Backend: https://app-davide-iasella-backend.onrender.com/api
 ```
 
 ---
