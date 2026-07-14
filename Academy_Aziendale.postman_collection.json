@@ -1,0 +1,36 @@
+{
+  "info": {
+    "name": "Academy Aziendale",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Login Referente",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\":\"referente@example.com\",\"password\":\"password123\"}"
+        },
+        "url": {"raw": "https://app-davide-iasella-backend.onrender.com/api/utenti/login", "protocol": "https", "host": ["app-davide-iasella-backend", "onrender", "com"], "path": ["api", "utenti", "login"]}
+      }
+    },
+    {
+      "name": "Get Corsi",
+      "request": {
+        "method": "GET",
+        "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+        "url": {"raw": "https://app-davide-iasella-backend.onrender.com/api/corsi", "protocol": "https", "host": ["app-davide-iasella-backend", "onrender", "com"], "path": ["api", "corsi"]}
+      }
+    },
+    {
+      "name": "Get Statistiche",
+      "request": {
+        "method": "GET",
+        "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+        "url": {"raw": "https://app-davide-iasella-backend.onrender.com/api/statistiche/academy", "protocol": "https", "host": ["app-davide-iasella-backend", "onrender", "com"], "path": ["api", "statistiche", "academy"]}
+      }
+    }
+  ]
+}
