@@ -1,6 +1,6 @@
-# Template Full-Stack per Esame
+# Academy Aziendale - Gestione Percorsi Formativi
 
-Un template completo per sviluppare applicazioni web full-stack con autenticazione e autorizzazione basate su ruoli.
+Applicazione web full-stack per la gestione dei percorsi formativi dei dipendenti, con autenticazione e autorizzazione basate su ruoli.
 
 ## Tecnologie
 
@@ -52,7 +52,7 @@ Il backend sarà disponibile su `http://localhost:5000`
 
 - **Dipendente 1**: mario@example.com / password123
 - **Dipendente 2**: francesca@example.com / password123
-- **Admin**: admin@example.com / password123
+- **Referente Academy**: referente@example.com / password123
 
 ### 2. Frontend
 
@@ -73,7 +73,7 @@ Il frontend sarà disponibile su `http://localhost:3000`
 - ✅ Protezione delle route
 
 ### Autorizzazione
-- ✅ Controllo basato su ruoli (dipendente/admin)
+- ✅ Controllo basato su ruoli (dipendente/referente_academy)
 - ✅ Middleware di autenticazione server-side
 - ✅ Protezione delle pagine frontend
 
@@ -82,7 +82,13 @@ Il frontend sarà disponibile su `http://localhost:3000`
 - ✅ Validazione server-side con express-validator
 - ✅ Hash delle password con bcrypt
 
-## Come Personalizzare il Template
+### Gestione Percorsi Formativi
+- ✅ Catalogo corsi con categorie
+- ✅ Assegnazione corsi ai dipendenti
+- ✅ Tracking completamento corsi
+- ✅ Statistiche di formazione aggregati
+
+## Funzionalità Implementate
 
 ### Aggiungere un Nuovo Modello
 
@@ -234,13 +240,14 @@ Assicurati che `JWT_SECRET` sia lo stesso nel backend.
 3. **Proteggi le API sensibili** - Usa il middleware `authorize()` per controllare i ruoli
 4. **Backup del database** - Assicurati di avere backup regolari
 
-## Prossimi Passi per l'Esame
+## Come Estendere l'Applicazione
 
-1. Crea i tuoi modelli specifici del caso d'uso
-2. Implementa la logica di business nei controller
-3. Crea le pagine specifiche nel frontend
-4. Aggiungi i dati iniziali in `seedDatabase.js`
-5. Testa tutte le funzionalità con Postman/Insomnia
-6. Esegui il deploy (opzionale ma consigliato)
+L'applicazione è già completa per il caso d'uso della gestione dei percorsi formativi. Per personalizzarla ulteriormente:
+
+1. Modifica le categorie di corsi nel `seedDatabase.js`
+2. Aggiungi ulteriori campi ai modelli (es: valutazione, feedback)
+3. Crea endpoint API aggiuntivi per nuove funzionalità
+4. Estendi il frontend con nuove pagine e componenti
+5. Configura le variabili di ambiente per il tuo ambiente di deployment
 
 Buona fortuna! 🚀

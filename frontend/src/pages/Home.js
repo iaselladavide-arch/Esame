@@ -23,8 +23,8 @@ const Home = () => {
   return (
     <div className="home-container">
       <div className="home-content">
-        <h1>App Template</h1>
-        <p>Applicazione web full-stack con autenticazione</p>
+        <h1>Academy Aziendale</h1>
+        <p>Gestione percorsi formativi dei dipendenti</p>
         <div className="home-buttons">
           <Link to="/login" className="btn btn-primary">
             Login

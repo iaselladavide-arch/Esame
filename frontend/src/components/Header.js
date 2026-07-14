@@ -16,7 +16,7 @@ const Header = () => {
     <header className="header">
       <div className="header-container">
         <Link to={user ? '/dashboard' : '/'} className="logo">
-          App Template
+          Academy Aziendale
         </Link>
         <nav className="nav">
           {user ? (
