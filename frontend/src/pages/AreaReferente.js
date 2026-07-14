@@ -24,10 +24,14 @@ const AreaReferente = () => {
 
   const fetchCategorie = async () => {
     try {
+      console.log('📥 Caricando categorie...');
       const response = await api.get('/categorie');
+      console.log('✅ Categorie caricate:', response.data.data);
       setCategorie(response.data.data || []);
     } catch (error) {
-      console.error('Errore nel caricamento categorie:', error);
+      console.error('❌ Errore nel caricamento categorie:', error);
+      console.error('Dettagli:', error.response?.data);
+      alert('Errore nel caricamento categorie: ' + (error.response?.data?.message || error.message));
     }
   };
 
