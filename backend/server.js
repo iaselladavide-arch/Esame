@@ -54,7 +54,7 @@ const initializeDatabase = async () => {
           cognome: 'Academy',
           email: 'referente@example.com',
           password: 'password123',
-          ruolo: 'referente_academy'
+          ruolo: 'referente'
         }
       ];
 
@@ -142,7 +142,7 @@ const initializeDatabase = async () => {
       console.log('Test users created:');
       console.log('  - mario@example.com / password123 (dipendente)');
       console.log('  - francesca@example.com / password123 (dipendente)');
-      console.log('  - referente@example.com / password123 (referente_academy)');
+      console.log('  - referente@example.com / password123 (referente)');
     } else {
       console.log(`[OK] Database already has ${userCount} users`);
     }

@@ -5,6 +5,6 @@ const { getCategorie, createCategoria } = require('../controllers/categorieContr
 const router = express.Router();
 
 router.get('/', protect, getCategorie);
-router.post('/', protect, authorize('referente_academy'), createCategoria);
+router.post('/', protect, authorize('referente'), createCategoria);
 
 module.exports = router;

@@ -11,12 +11,12 @@ const Dashboard = () => {
     <div className="dashboard-container">
       <div className="welcome-card">
         <h2>Benvenuto, {user?.nome} {user?.cognome}!</h2>
-        <p>Ruolo: <strong>{user?.ruolo === 'referente_academy' ? 'Referente Academy' : 'Dipendente'}</strong></p>
+        <p>Ruolo: <strong>{user?.ruolo === 'referente' ? 'Referente Academy' : 'Dipendente'}</strong></p>
         <p>Email: <strong>{user?.email}</strong></p>
       </div>
 
       {user?.ruolo === 'dipendente' && <AreaDipendente />}
-      {user?.ruolo === 'referente_academy' && <AreaReferente />}
+      {user?.ruolo === 'referente' && <AreaReferente />}
     </div>
   );
 };

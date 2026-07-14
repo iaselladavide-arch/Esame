@@ -73,7 +73,7 @@ Il frontend sarà disponibile su `http://localhost:3000`
 -  Protezione delle route
 
 ### Autorizzazione
--  Controllo basato su ruoli (dipendente/referente_academy)
+-  Controllo basato su ruoli (dipendente/referente)
 -  Middleware di autenticazione server-side
 -  Protezione delle pagine frontend
 

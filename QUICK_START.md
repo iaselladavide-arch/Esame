@@ -28,7 +28,7 @@ Output:
 Credenziali di test:
   - mario@example.com / password123 (dipendente)
   - francesca@example.com / password123 (dipendente)
-  - referente@example.com / password123 (referente_academy)
+  - referente@example.com / password123 (referente)
 ```
 
 ## 3. Avvia il Server Backend

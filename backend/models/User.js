@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema({
   },
   ruolo: {
     type: String,
-    enum: ['dipendente', 'referente_academy'],
+    enum: ['dipendente', 'referente'],
     default: 'dipendente'
   },
   createdAt: {

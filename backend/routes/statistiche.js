@@ -4,6 +4,6 @@ const statisticheController = require('../controllers/statisticheController');
 
 const router = express.Router();
 
-router.get('/academy', protect, authorize('referente_academy'), statisticheController.getStatistiche);
+router.get('/academy', protect, authorize('referente'), statisticheController.getStatistiche);
 
 module.exports = router;

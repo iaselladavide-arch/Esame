@@ -49,7 +49,7 @@ const resetDatabase = async () => {
         cognome: 'Academy',
         email: 'referente@example.com',
         password: 'password123',
-        ruolo: 'referente_academy'
+        ruolo: 'referente'
       }
     ];
 
@@ -139,7 +139,7 @@ const resetDatabase = async () => {
     console.log('Credenziali di test:');
     console.log('  - mario@example.com / password123 (dipendente)');
     console.log('  - francesca@example.com / password123 (dipendente)');
-    console.log('  - referente@example.com / password123 (referente_academy)');
+    console.log('  - referente@example.com / password123 (referente)');
 
     process.exit(0);
   } catch (error) {
