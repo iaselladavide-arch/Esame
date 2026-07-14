@@ -1,4 +1,4 @@
-# Quick Start - Avvia il Template in 5 Minuti
+# Quick Start - Avvia l'Applicazione in 5 Minuti
 
 ## 1. Installa le Dipendenze
 
@@ -18,16 +18,17 @@ npm install
 
 ```bash
 cd backend
-node seedDatabase.js
+node resetDatabase.js
 ```
 
 Output:
 ```
-Database seeded successfully!
-Test users:
-Email: mario@example.com, Password: password123, Role: dipendente
-Email: francesca@example.com, Password: password123, Role: dipendente
-Email: admin@example.com, Password: password123, Role: admin
+✅ DATABASE RESET COMPLETATO!
+
+Credenziali di test:
+  - mario@example.com / password123 (dipendente)
+  - francesca@example.com / password123 (dipendente)
+  - referente@example.com / password123 (referente_academy)
 ```
 
 ## 3. Avvia il Server Backend
@@ -67,7 +68,7 @@ Si aprirà automaticamente `http://localhost:3000`
 |-------|----------|-------|
 | mario@example.com | password123 | Dipendente |
 | francesca@example.com | password123 | Dipendente |
-| admin@example.com | password123 | Admin |
+| referente@example.com | password123 | Referente Academy |
 
 ## Comandi Utili
 
@@ -108,7 +109,7 @@ Quando inizi il tuo caso d'uso, modifica questi file:
 - `backend/models/` - Aggiungi i tuoi modelli
 - `backend/controllers/` - Aggiungi la logica
 - `backend/routes/` - Aggiungi le API
-- `backend/seedDatabase.js` - Modifica i dati di test
+- `backend/resetDatabase.js` - Script per reset e seed del database
 
 ### Frontend
 - `frontend/src/pages/` - Aggiungi le tue pagine

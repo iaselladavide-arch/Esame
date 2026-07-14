@@ -1,6 +1,6 @@
 # Deploy su Render - Guida Semplice
 
-Questa guida ti farà deployare il template su **Render in 10 minuti**.
+Questa guida ti farà deployare l'applicazione su **Render in 10 minuti**.
 Quando finisci, avrai il sito live con dati di test pronti per l'esame.
 
 **URL che avrai:**
@@ -22,7 +22,7 @@ Quando finisci, avrai il sito live con dati di test pronti per l'esame.
 
 1. Vai a https://github.com/new
 2. Compila:
-   - **Repository name**: `esame-template`
+   - **Repository name**: `esame`
    - **Description**: Template esame
    - **Public** ✅
    - NON selezionare "Add README"
@@ -33,9 +33,9 @@ Quando finisci, avrai il sito live con dati di test pronti per l'esame.
 Copia-incolla questi comandi nel PowerShell:
 
 ```powershell
-cd C:\Users\user\Desktop\Esame\esame-template
+cd C:\Users\user\Desktop\Esame\esame
 git branch -M main
-git remote add origin https://github.com/TUO_USERNAME/esame-template.git
+git remote add origin https://github.com/TUO_USERNAME/esame.git
 git push -u origin main
 ```
 
@@ -60,7 +60,7 @@ Aspetta che finisca (vedrai righe di output).
 2. Seleziona **"Web Service"**
 3. Seleziona **"Deploy existing code from a repository"**
 4. Clicca **"Connect account"** (se richiesto)
-5. Seleziona il repository `esame-template`
+5. Seleziona il repository `esame`
 6. Clicca **"Connect"**
 
 ### Step 3: Configura il Backend
@@ -79,7 +79,7 @@ Start Command: cd backend && npm start
 Clicca **"Advanced"** e aggiungi le **Environment Variables**:
 
 ```
-MONGODB_URI = mongodb+srv://iasella_db_user:557QmUu5NBy45ex9@camposportivodatabase.igm6ipb.mongodb.net/esame_template
+MONGODB_URI = mongodb+srv://iasella_db_user:557QmUu5NBy45ex9@camposportivodatabase.igm6ipb.mongodb.net/esame
 JWT_SECRET = esame_secret_key_2024
 PORT = 8000
 NODE_ENV = production
@@ -101,7 +101,7 @@ Aspetta il deploy (2-3 minuti). Vedrai una schermata con l'URL quando è finito.
 1. Nel dashboard Render, clicca **"New +"**
 2. Seleziona **"Static Site"** (NON Web Service!)
 3. Seleziona **"Connect repository"**
-4. Seleziona `esame-template`
+4. Seleziona `esame`
 
 ### Step 2: Configura il Frontend
 
@@ -182,7 +182,7 @@ Backend: https://app-davide-iasella-backend.onrender.com/api
 → È il container che si sta avviando. Aspetta 30 secondi.
 
 ### Database vuoto
-→ Render esegue `seedDatabase.js` automaticamente al primo avvio
+→ Render esegue il seeding automatico al primo avvio se il database è vuoto
 
 ---
 
@@ -217,8 +217,9 @@ Non devi fare NIENTE durante l'esame, è tutto già live e funzionante.
 ## 📝 Credenziali di Test Live
 
 ```
-mario@example.com / password123
-admin@example.com / password123
+mario@example.com / password123 (Dipendente)
+francesca@example.com / password123 (Dipendente)
+referente@example.com / password123 (Referente Academy)
 ```
 
 ---

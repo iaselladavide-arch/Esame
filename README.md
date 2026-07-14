@@ -12,7 +12,7 @@ Applicazione web full-stack per la gestione dei percorsi formativi dei dipendent
 ## Struttura del Progetto
 
 ```
-esame-template/
+esame/
 ├── backend/
 │   ├── config/          # Configurazione database
 │   ├── models/          # Modelli Mongoose
@@ -22,7 +22,7 @@ esame-template/
 │   ├── .env             # Variabili di ambiente
 │   ├── server.js        # Entry point backend
 │   ├── package.json
-│   └── seedDatabase.js  # Script per dati iniziali
+│   └── resetDatabase.js # Script per reset DB
 └── frontend/
     ├── public/          # File statici
     ├── src/
@@ -171,7 +171,7 @@ GET /api/utenti/me (protetto)
 
 ### Backend (.env)
 ```
-MONGODB_URI=mongodb+srv://iasella_db_user:557QmUu5NBy45ex9@camposportivodatabase.igm6ipb.mongodb.net/esame_template
+MONGODB_URI=mongodb+srv://iasella_db_user:557QmUu5NBy45ex9@camposportivodatabase.igm6ipb.mongodb.net/esame
 JWT_SECRET=your_jwt_secret_key_change_this_in_production
 PORT=5000
 NODE_ENV=development
