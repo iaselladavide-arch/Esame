@@ -4,12 +4,14 @@ import './AreaReferente.css';
 
 const AreaReferente = () => {
   const { api } = useAuth();
-  const [tab, setTab] = useState('corsi'); // corsi, assegnazioni, statistiche
+  const [tab, setTab] = useState('corsi');
   const [corsi, setCorsi] = useState([]);
   const [assegnazioni, setAssegnazioni] = useState([]);
   const [statistiche, setStatistiche] = useState([]);
+  const [dipendenti, setDipendenti] = useState([]);
   const [loading, setLoading] = useState(true);
   const [formCorso, setFormCorso] = useState({ titolo: '', descrizione: '', categoriaId: '', durataOre: '' });
+  const [formAssegnazione, setFormAssegnazione] = useState({ dipendenteId: '', corsoId: '', dataScadenza: '' });
   const [categorie, setCategorie] = useState([]);
 
   useEffect(() => {
@@ -20,6 +22,7 @@ const AreaReferente = () => {
 
   useEffect(() => {
     fetchCategorie();
+    fetchDipendenti();
   }, []);
 
   const fetchCategorie = async () => {
@@ -32,6 +35,15 @@ const AreaReferente = () => {
       console.error('❌ Errore nel caricamento categorie:', error);
       console.error('Dettagli:', error.response?.data);
       alert('Errore nel caricamento categorie: ' + (error.response?.data?.message || error.message));
+    }
+  };
+
+  const fetchDipendenti = async () => {
+    try {
+      const response = await api.get('/utenti/dipendenti');
+      setDipendenti(response.data.data || []);
+    } catch (error) {
+      console.error('Errore nel caricamento dipendenti:', error);
     }
   };
 
@@ -93,6 +105,20 @@ const AreaReferente = () => {
         console.error('Errore nella cancellazione:', error);
         alert(error.response?.data?.message || 'Errore nella cancellazione');
       }
+    }
+  };
+
+  const createAssegnazione = async (e) => {
+    e.preventDefault();
+    try {
+      console.log('📤 Invio assegnazione:', formAssegnazione);
+      await api.post('/assegnazioni-corsi', formAssegnazione);
+      setFormAssegnazione({ dipendenteId: '', corsoId: '', dataScadenza: '' });
+      fetchAssegnazioni();
+    } catch (error) {
+      console.error('Errore nella creazione assegnazione:', error);
+      console.error('📥 Risposta errore:', error.response?.data);
+      alert(error.response?.data?.message || 'Errore nella creazione assegnazione');
     }
   };
 
@@ -182,7 +208,40 @@ const AreaReferente = () => {
 
       {tab === 'assegnazioni' && (
         <div className="tab-content">
-          <h3>Assegnazioni Corsi</h3>
+          <div className="form-section">
+            <h3>Nuova Assegnazione</h3>
+            <form onSubmit={createAssegnazione}>
+              <select
+                value={formAssegnazione.dipendenteId}
+                onChange={(e) => setFormAssegnazione({ ...formAssegnazione, dipendenteId: e.target.value })}
+                required
+              >
+                <option value="">Seleziona dipendente</option>
+                {dipendenti.map(dip => (
+                  <option key={dip._id} value={dip._id}>{dip.nome} {dip.cognome}</option>
+                ))}
+              </select>
+              <select
+                value={formAssegnazione.corsoId}
+                onChange={(e) => setFormAssegnazione({ ...formAssegnazione, corsoId: e.target.value })}
+                required
+              >
+                <option value="">Seleziona corso</option>
+                {corsi.map(c => (
+                  <option key={c._id} value={c._id}>{c.titolo}</option>
+                ))}
+              </select>
+              <input
+                type="date"
+                value={formAssegnazione.dataScadenza}
+                onChange={(e) => setFormAssegnazione({ ...formAssegnazione, dataScadenza: e.target.value })}
+                required
+              />
+              <button type="submit" className="btn btn-primary">Assegna Corso</button>
+            </form>
+          </div>
+
+          <h3>Assegnazioni Esistenti</h3>
           <table className="tabella">
             <thead>
               <tr>

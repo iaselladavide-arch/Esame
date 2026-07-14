@@ -103,3 +103,12 @@ exports.getMe = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+exports.getDipendenti = async (req, res) => {
+  try {
+    const dipendenti = await User.find({ ruolo: 'dipendente' }).select('_id nome cognome email');
+    res.json({ success: true, data: dipendenti });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};

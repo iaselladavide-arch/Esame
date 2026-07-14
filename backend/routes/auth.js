@@ -19,5 +19,6 @@ router.post('/login', [
 ], authController.login);
 
 router.get('/me', protect, authController.getMe);
+router.get('/dipendenti', protect, authController.getDipendenti);
 
 module.exports = router;
