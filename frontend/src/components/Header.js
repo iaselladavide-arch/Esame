@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import './Header.css';
@@ -9,8 +9,13 @@ const Header = () => {
 
   const handleLogout = () => {
     logout();
-    navigate('/login');
   };
+
+  useEffect(() => {
+    if (user === null && window.location.pathname !== '/login' && window.location.pathname !== '/register' && window.location.pathname !== '/') {
+      navigate('/login');
+    }
+  }, [user, navigate]);
 
   return (
     <header className="header">
