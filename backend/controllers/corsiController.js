@@ -44,8 +44,8 @@ exports.createCorso = async (req, res) => {
     });
 
     await corso.save();
-    await corso.populate('categoriaId', 'nome');
-    res.status(201).json({ success: true, data: corso });
+    const corsoPopulated = await CorsoAcademy.findById(corso._id).populate('categoriaId');
+    res.status(201).json({ success: true, data: corsoPopulated });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
@@ -58,8 +58,8 @@ exports.updateCorso = async (req, res) => {
 
     Object.assign(corso, req.body);
     await corso.save();
-    await corso.populate('categoriaId', 'nome');
-    res.json({ success: true, data: corso });
+    const corsoPopulated = await CorsoAcademy.findById(corso._id).populate('categoriaId');
+    res.json({ success: true, data: corsoPopulated });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
