@@ -23,7 +23,7 @@ node resetDatabase.js
 
 Output:
 ```
-✅ DATABASE RESET COMPLETATO!
+ DATABASE RESET COMPLETATO!
 
 Credenziali di test:
   - mario@example.com / password123 (dipendente)

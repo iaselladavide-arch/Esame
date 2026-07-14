@@ -67,26 +67,26 @@ Il frontend sarà disponibile su `http://localhost:3000`
 ## Caratteristiche Implementate
 
 ### Autenticazione
-- ✅ Registrazione con validazione
-- ✅ Login con JWT
-- ✅ Logout
-- ✅ Protezione delle route
+-  Registrazione con validazione
+-  Login con JWT
+-  Logout
+-  Protezione delle route
 
 ### Autorizzazione
-- ✅ Controllo basato su ruoli (dipendente/referente_academy)
-- ✅ Middleware di autenticazione server-side
-- ✅ Protezione delle pagine frontend
+-  Controllo basato su ruoli (dipendente/referente_academy)
+-  Middleware di autenticazione server-side
+-  Protezione delle pagine frontend
 
 ### Validazione
-- ✅ Validazione client-side
-- ✅ Validazione server-side con express-validator
-- ✅ Hash delle password con bcrypt
+-  Validazione client-side
+-  Validazione server-side con express-validator
+-  Hash delle password con bcrypt
 
 ### Gestione Percorsi Formativi
-- ✅ Catalogo corsi con categorie
-- ✅ Assegnazione corsi ai dipendenti
-- ✅ Tracking completamento corsi
-- ✅ Statistiche di formazione aggregati
+-  Catalogo corsi con categorie
+-  Assegnazione corsi ai dipendenti
+-  Tracking completamento corsi
+-  Statistiche di formazione aggregati
 
 ## Funzionalità Implementate
 
@@ -250,4 +250,4 @@ L'applicazione è già completa per il caso d'uso della gestione dei percorsi fo
 4. Estendi il frontend con nuove pagine e componenti
 5. Configura le variabili di ambiente per il tuo ambiente di deployment
 
-Buona fortuna! 🚀
+Buona fortuna! 

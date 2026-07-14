@@ -9,7 +9,7 @@ Quando finisci, avrai il sito live con dati di test pronti per l'esame.
 
 ---
 
-## 📋 Prerequisiti
+## Prerequisiti
 
 - Account GitHub (gratuito)
 - Account Render (gratuito)
@@ -24,8 +24,7 @@ Quando finisci, avrai il sito live con dati di test pronti per l'esame.
 2. Compila:
    - **Repository name**: `esame`
    - **Description**: Template esame
-   - **Public** ✅
-   - NON selezionare "Add README"
+   - **Public**    - NON selezionare "Add README"
 3. Clicca **"Create repository"**
 
 ### Step 2: Push il Codice
@@ -39,7 +38,7 @@ git remote add origin https://github.com/TUO_USERNAME/esame.git
 git push -u origin main
 ```
 
-**⚠️ Sostituisci `TUO_USERNAME` con il tuo username GitHub!**
+**ATTENZIONE: Sostituisci `TUO_USERNAME` con il tuo username GitHub!**
 
 Aspetta che finisca (vedrai righe di output).
 
@@ -148,11 +147,10 @@ Clicca il link di Render del tuo frontend. Dovresti vedere la home page.
 2. Inserisci: `mario@example.com` / `password123`
 3. Dovresti arrivare alla Dashboard
 
-Se funziona → **PERFETTO! Hai finito!** ✅
-
+Se funziona → **PERFETTO! Hai finito!** 
 ---
 
-## 🎉 FATTO!
+##  FATTO!
 
 Adesso hai:
 - ✅ Backend deployato e live
@@ -170,7 +168,7 @@ Backend: https://app-davide-iasella-backend.onrender.com/api
 
 ---
 
-## 🆘 Se non funziona?
+## HELP: Se non funziona?
 
 ### Errore: "Cannot find module"
 → Aspetta il rebuild automatico (5-10 min)
@@ -186,7 +184,7 @@ Backend: https://app-davide-iasella-backend.onrender.com/api
 
 ---
 
-## 🔄 Come Aggiornare il Deploy
+## UPDATE: Come Aggiornare il Deploy
 
 Quando modifichi il codice:
 
@@ -196,11 +194,10 @@ git commit -m "Descrizione cambio"
 git push origin main
 ```
 
-Render si aggiorna automaticamente! ✅
-
+Render si aggiorna automaticamente! 
 ---
 
-## 💡 Durante l'Esame
+## NOTE: Durante l'Esame
 
 Quando l'esaminatore ti chiede il sito:
 
@@ -208,13 +205,12 @@ Quando l'esaminatore ti chiede il sito:
 2. Mostra il login
 3. Accedi con le credenziali di test
 4. Dimostra la dashboard
-5. FINITO! ✅
-
+5. FINITO! 
 Non devi fare NIENTE durante l'esame, è tutto già live e funzionante.
 
 ---
 
-## 📝 Credenziali di Test Live
+## CREDS: Credenziali di Test Live
 
 ```
 mario@example.com / password123 (Dipendente)
@@ -224,4 +220,4 @@ referente@example.com / password123 (Referente Academy)
 
 ---
 
-Buona fortuna! 🚀
+Buona fortuna!
