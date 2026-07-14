@@ -27,12 +27,12 @@ const AreaReferente = () => {
 
   const fetchCategorie = async () => {
     try {
-      console.log('📥 Caricando categorie...');
+      console.log('[INFO] Caricando categorie...');
       const response = await api.get('/categorie');
-      console.log('✅ Categorie caricate:', response.data.data);
+      console.log('[OK] Categorie caricate:', response.data.data);
       setCategorie(response.data.data || []);
     } catch (error) {
-      console.error('❌ Errore nel caricamento categorie:', error);
+      console.error('[ERROR] Errore nel caricamento categorie:', error);
       console.error('Dettagli:', error.response?.data);
       alert('Errore nel caricamento categorie: ' + (error.response?.data?.message || error.message));
     }
@@ -86,13 +86,13 @@ const AreaReferente = () => {
   const createCorso = async (e) => {
     e.preventDefault();
     try {
-      console.log('📤 Invio corso:', formCorso);
+      console.log('[REQUEST] Invio corso:', formCorso);
       await api.post('/corsi', formCorso);
       setFormCorso({ titolo: '', descrizione: '', categoriaId: '', durataOre: '' });
       fetchCorsi();
     } catch (error) {
       console.error('Errore nella creazione corso:', error);
-      console.error('📥 Risposta errore:', error.response?.data);
+      console.error('[RESPONSE] Risposta errore:', error.response?.data);
     }
   };
 
@@ -111,13 +111,13 @@ const AreaReferente = () => {
   const createAssegnazione = async (e) => {
     e.preventDefault();
     try {
-      console.log('📤 Invio assegnazione:', formAssegnazione);
+      console.log('[REQUEST] Invio assegnazione:', formAssegnazione);
       await api.post('/assegnazioni-corsi', formAssegnazione);
       setFormAssegnazione({ dipendenteId: '', corsoId: '', dataScadenza: '' });
       fetchAssegnazioni();
     } catch (error) {
       console.error('Errore nella creazione assegnazione:', error);
-      console.error('📥 Risposta errore:', error.response?.data);
+      console.error('[RESPONSE] Risposta errore:', error.response?.data);
       alert(error.response?.data?.message || 'Errore nella creazione assegnazione');
     }
   };

@@ -138,16 +138,16 @@ const initializeDatabase = async () => {
         }
       ]);
 
-      console.log('✅ Database seeded successfully!');
+      console.log('[OK] Database seeded successfully!');
       console.log('Test users created:');
       console.log('  - mario@example.com / password123 (dipendente)');
       console.log('  - francesca@example.com / password123 (dipendente)');
       console.log('  - referente@example.com / password123 (referente_academy)');
     } else {
-      console.log(`✅ Database already has ${userCount} users`);
+      console.log(`[OK] Database already has ${userCount} users`);
     }
   } catch (error) {
-    console.error('❌ Error initializing database:', error);
+    console.error('[ERROR] Error initializing database:', error);
     process.exit(1);
   }
 };

@@ -17,7 +17,7 @@ const resetDatabase = async () => {
     await Categoria.deleteMany({});
     await CorsoAcademy.deleteMany({});
     await AssegnazioneCorso.deleteMany({});
-    console.log('✅ Dati eliminati');
+    console.log('[OK] Dati eliminati');
 
     console.log('Creando categorie...');
     const categorie = await Categoria.insertMany([
@@ -26,7 +26,7 @@ const resetDatabase = async () => {
       { nome: 'Leadership', descrizione: 'Corsi di leadership' },
       { nome: 'Lingue', descrizione: 'Corsi di lingue straniere' }
     ]);
-    console.log(`✅ ${categorie.length} categorie create`);
+    console.log(`[OK] ${categorie.length} categorie create`);
 
     console.log('Creando utenti...');
     const testUsers = [
@@ -59,7 +59,7 @@ const resetDatabase = async () => {
     }
 
     const users = await User.insertMany(testUsers);
-    console.log(`✅ ${users.length} utenti creati`);
+    console.log(`[OK] ${users.length} utenti creati`);
 
     console.log('Creando corsi...');
     const corsi = await CorsoAcademy.insertMany([
@@ -96,7 +96,7 @@ const resetDatabase = async () => {
         attivo: true
       }
     ]);
-    console.log(`✅ ${corsi.length} corsi creati`);
+    console.log(`[OK] ${corsi.length} corsi creati`);
 
     console.log('Creando assegnazioni...');
     const dataInizio = new Date();
@@ -133,9 +133,9 @@ const resetDatabase = async () => {
         stato: 'Assegnato'
       }
     ]);
-    console.log(`✅ ${assegnazioni.length} assegnazioni create`);
+    console.log(`[OK] ${assegnazioni.length} assegnazioni create`);
 
-    console.log('\n✅ DATABASE RESET COMPLETATO!\n');
+    console.log('\n[OK] DATABASE RESET COMPLETATO!\n');
     console.log('Credenziali di test:');
     console.log('  - mario@example.com / password123 (dipendente)');
     console.log('  - francesca@example.com / password123 (dipendente)');
@@ -143,7 +143,7 @@ const resetDatabase = async () => {
 
     process.exit(0);
   } catch (error) {
-    console.error('❌ Errore:', error.message);
+    console.error('[ERROR] Errore:', error.message);
     process.exit(1);
   }
 };

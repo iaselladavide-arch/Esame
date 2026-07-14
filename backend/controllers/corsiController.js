@@ -47,7 +47,7 @@ exports.createCorso = async (req, res) => {
     const corsoPopulated = await CorsoAcademy.findById(corso._id).populate('categoriaId');
     res.status(201).json({ success: true, data: corsoPopulated });
   } catch (error) {
-    console.error('❌ Errore createCorso:', error);
+    console.error('[ERROR] Errore createCorso:', error);
     res.status(500).json({ success: false, message: error.message });
   }
 };
