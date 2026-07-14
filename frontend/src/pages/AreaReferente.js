@@ -70,11 +70,13 @@ const AreaReferente = () => {
   const createCorso = async (e) => {
     e.preventDefault();
     try {
+      console.log('📤 Invio corso:', formCorso);
       await api.post('/corsi', formCorso);
       setFormCorso({ titolo: '', descrizione: '', categoriaId: '', durataOre: '' });
       fetchCorsi();
     } catch (error) {
       console.error('Errore nella creazione corso:', error);
+      console.error('📥 Risposta errore:', error.response?.data);
     }
   };
 
