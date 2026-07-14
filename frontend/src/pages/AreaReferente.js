@@ -24,8 +24,6 @@ const AreaReferente = () => {
 
   const fetchCategorie = async () => {
     try {
-      // In una versione completa, avremmo un endpoint /api/categorie
-      // Per ora hardcoded
       setCategorie([
         { _id: 'sicurezza', nome: 'Sicurezza' },
         { _id: 'sviluppo', nome: 'Sviluppo' },

@@ -4,7 +4,6 @@ const statisticheController = require('../controllers/statisticheController');
 
 const router = express.Router();
 
-// Solo referente Academy
 router.get('/academy', protect, authorize('referente_academy'), statisticheController.getStatistiche);
 
 module.exports = router;

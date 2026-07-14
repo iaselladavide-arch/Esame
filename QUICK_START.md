@@ -130,4 +130,4 @@ Quando inizi il tuo caso d'uso, modifica questi file:
 
 ## Prossimo Passo
 
-Leggi `GUIDA_ESTENSIONE.md` per capire come aggiungere i tuoi modelli e pagine! 📖
+Leggi `GUIDA_ESTENSIONE.md` per capire come aggiungere i tuoi modelli e pagine!

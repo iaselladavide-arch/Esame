@@ -6,7 +6,6 @@ exports.getStatistiche = async (req, res) => {
     const { mese, categoria, dipendente } = req.query;
     const filter = {};
 
-    // Filtrare per mese (formato: 2026-05)
     if (mese) {
       const [year, month] = mese.split('-');
       const startDate = new Date(year, month - 1, 1);
@@ -20,7 +19,6 @@ exports.getStatistiche = async (req, res) => {
       .populate('corsoId')
       .populate('dipendenteId', 'nome cognome');
 
-    // Aggregare per categoria
     const statsPerCategoria = {};
 
     for (const assegnazione of assegnazioni) {
@@ -42,7 +40,6 @@ exports.getStatistiche = async (req, res) => {
       }
     }
 
-    // Convertire a array e aggiungere percentuale
     const result = Object.values(statsPerCategoria).map(stat => ({
       categoria: stat.categoria,
       numeroAssegnazioni: stat.numeroAssegnazioni,
@@ -52,7 +49,6 @@ exports.getStatistiche = async (req, res) => {
         : 0
     }));
 
-    // Popolare i nomi delle categorie
     const categorieMap = await CorsoAcademy.distinct('categoriaId', { categoriaId: { $in: result.map(r => r.categoria) } });
     const categorie = await require('../models/Categoria').find({ _id: { $in: categorieMap } });
     const categorieDict = {};

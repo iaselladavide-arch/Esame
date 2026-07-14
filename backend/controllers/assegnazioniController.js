@@ -6,7 +6,6 @@ exports.getAssegnazioni = async (req, res) => {
     const { stato, categoria, corso, dipendente } = req.query;
     const filter = {};
 
-    // Se è dipendente, vede solo le sue assegnazioni
     if (req.userRole === 'dipendente') {
       filter.dipendenteId = req.userId;
     } else if (dipendente) {
@@ -20,7 +19,6 @@ exports.getAssegnazioni = async (req, res) => {
       .populate('corsoId')
       .populate('dipendenteId', 'nome cognome email');
 
-    // Filtrare per categoria se specificato
     if (categoria) {
       const corsiByCat = await CorsoAcademy.find({ categoriaId: categoria }).select('_id');
       const corsiIds = corsiByCat.map(c => c._id);
@@ -47,7 +45,6 @@ exports.getAssegnazioneById = async (req, res) => {
       return res.status(404).json({ success: false, message: 'Assegnazione non trovata' });
     }
 
-    // Dipendente può vedere solo le proprie assegnazioni
     if (req.userRole === 'dipendente' && assegnazione.dipendenteId._id.toString() !== req.userId) {
       return res.status(403).json({ success: false, message: 'Non autorizzato' });
     }
@@ -111,7 +108,6 @@ exports.completaAssegnazione = async (req, res) => {
     const assegnazione = await AssegnazioneCorso.findById(req.params.id);
     if (!assegnazione) return res.status(404).json({ success: false, message: 'Assegnazione non trovata' });
 
-    // Dipendente può completare solo le proprie assegnazioni
     if (req.userRole === 'dipendente' && assegnazione.dipendenteId.toString() !== req.userId) {
       return res.status(403).json({ success: false, message: 'Non autorizzato' });
     }
