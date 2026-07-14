@@ -24,12 +24,8 @@ const AreaReferente = () => {
 
   const fetchCategorie = async () => {
     try {
-      setCategorie([
-        { _id: 'sicurezza', nome: 'Sicurezza' },
-        { _id: 'sviluppo', nome: 'Sviluppo' },
-        { _id: 'leadership', nome: 'Leadership' },
-        { _id: 'lingue', nome: 'Lingue' }
-      ]);
+      const response = await api.get('/categorie');
+      setCategorie(response.data.data || []);
     } catch (error) {
       console.error('Errore nel caricamento categorie:', error);
     }

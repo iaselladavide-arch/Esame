@@ -4,6 +4,7 @@ const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const connectDB = require('./config/database');
 const authRoutes = require('./routes/auth');
+const categorieRoutes = require('./routes/categorie');
 const corsiRoutes = require('./routes/corsi');
 const assegnazioniRoutes = require('./routes/assegnazioni');
 const statisticheRoutes = require('./routes/statistiche');
@@ -163,6 +164,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api/utenti', authRoutes);
+app.use('/api/categorie', categorieRoutes);
 app.use('/api/corsi', corsiRoutes);
 app.use('/api/assegnazioni-corsi', assegnazioniRoutes);
 app.use('/api/statistiche', statisticheRoutes);
