@@ -210,6 +210,22 @@
   color: #333;
 }
 
+.status-active {
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-weight: 600;
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-inactive {
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-weight: 600;
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
 .loading {
   text-align: center;
   padding: 2rem;

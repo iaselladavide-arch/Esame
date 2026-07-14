@@ -198,7 +198,7 @@ const AreaReferente = () => {
                 <h4>{corso.titolo}</h4>
                 <p>{corso.descrizione}</p>
                 <p><strong>Durata:</strong> {corso.durataOre} ore</p>
-                <p><strong>Stato:</strong> {corso.attivo ? '✅ Attivo' : '❌ Inattivo'}</p>
+                <p><strong>Stato:</strong> <span className={corso.attivo ? 'status-active' : 'status-inactive'}>{corso.attivo ? 'Attivo' : 'Inattivo'}</span></p>
                 <button onClick={() => deleteCorso(corso._id)} className="btn btn-danger">Elimina</button>
               </div>
             ))}
