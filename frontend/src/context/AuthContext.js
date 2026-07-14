@@ -1,4 +1,4 @@
-import React, { createContext, useState, useCallback } from 'react';
+import React, { createContext, useState, useCallback, useMemo } from 'react';
 import axios from 'axios';
 
 const AuthContext = createContext();
@@ -9,10 +9,10 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const api = axios.create({
+  const api = useMemo(() => axios.create({
     baseURL: process.env.REACT_APP_API_URL,
     headers: token ? { Authorization: `Bearer ${token}` } : {}
-  });
+  }), [token]);
 
   const register = useCallback(async (nome, cognome, email, password, confirmPassword, ruolo = 'dipendente') => {
     setLoading(true);
