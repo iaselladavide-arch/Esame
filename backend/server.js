@@ -15,7 +15,6 @@ const AssegnazioneCorso = require('./models/AssegnazioneCorso');
 
 const app = express();
 
-// Connect to database and seed if empty
 const initializeDatabase = async () => {
   try {
     await connectDB();
@@ -25,7 +24,6 @@ const initializeDatabase = async () => {
     if (userCount === 0) {
       console.log('Database empty. Seeding with test data...');
 
-      // Create categories
       const categorie = await Categoria.insertMany([
         { nome: 'Sicurezza', descrizione: 'Corsi di sicurezza sul lavoro' },
         { nome: 'Sviluppo', descrizione: 'Corsi di sviluppo software' },
@@ -33,7 +31,6 @@ const initializeDatabase = async () => {
         { nome: 'Lingue', descrizione: 'Corsi di lingue straniere' }
       ]);
 
-      // Create users
       const testUsers = [
         {
           nome: 'Mario',
@@ -58,7 +55,6 @@ const initializeDatabase = async () => {
         }
       ];
 
-      // Hash passwords
       for (let user of testUsers) {
         const salt = await bcrypt.genSalt(10);
         user.password = await bcrypt.hash(user.password, salt);
@@ -66,7 +62,6 @@ const initializeDatabase = async () => {
 
       const users = await User.insertMany(testUsers);
 
-      // Create courses
       const corsi = await CorsoAcademy.insertMany([
         {
           titolo: 'Sicurezza Generale',
@@ -102,9 +97,8 @@ const initializeDatabase = async () => {
         }
       ]);
 
-      // Create assignments
       const dataInizio = new Date();
-      const dataFine = new Date(dataInizio.getTime() + 30 * 24 * 60 * 60 * 1000); // 30 giorni
+      const dataFine = new Date(dataInizio.getTime() + 30 * 24 * 60 * 60 * 1000);
 
       await AssegnazioneCorso.insertMany([
         {
@@ -152,24 +146,20 @@ const initializeDatabase = async () => {
   }
 };
 
-// Initialize database
 initializeDatabase();
 
-// Middleware
 app.use(cors({
   origin: process.env.FRONTEND_URL,
   credentials: true
 }));
 app.use(express.json());
 
-// Routes
 app.use('/api/utenti', authRoutes);
 app.use('/api/categorie', categorieRoutes);
 app.use('/api/corsi', corsiRoutes);
 app.use('/api/assegnazioni-corsi', assegnazioniRoutes);
 app.use('/api/statistiche', statisticheRoutes);
 
-// Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ message: 'Errore del server' });
