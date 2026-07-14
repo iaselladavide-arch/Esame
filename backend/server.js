@@ -4,7 +4,13 @@ const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const connectDB = require('./config/database');
 const authRoutes = require('./routes/auth');
+const corsiRoutes = require('./routes/corsi');
+const assegnazioniRoutes = require('./routes/assegnazioni');
+const statisticheRoutes = require('./routes/statistiche');
 const User = require('./models/User');
+const Categoria = require('./models/Categoria');
+const CorsoAcademy = require('./models/CorsoAcademy');
+const AssegnazioneCorso = require('./models/AssegnazioneCorso');
 
 const app = express();
 
@@ -13,12 +19,20 @@ const initializeDatabase = async () => {
   try {
     await connectDB();
 
-    // Check if database is empty
     const userCount = await User.countDocuments();
 
     if (userCount === 0) {
       console.log('Database empty. Seeding with test data...');
 
+      // Create categories
+      const categorie = await Categoria.insertMany([
+        { nome: 'Sicurezza', descrizione: 'Corsi di sicurezza sul lavoro' },
+        { nome: 'Sviluppo', descrizione: 'Corsi di sviluppo software' },
+        { nome: 'Leadership', descrizione: 'Corsi di leadership' },
+        { nome: 'Lingue', descrizione: 'Corsi di lingue straniere' }
+      ]);
+
+      // Create users
       const testUsers = [
         {
           nome: 'Mario',
@@ -35,26 +49,99 @@ const initializeDatabase = async () => {
           ruolo: 'dipendente'
         },
         {
-          nome: 'Admin',
-          cognome: 'User',
-          email: 'admin@example.com',
+          nome: 'Referente',
+          cognome: 'Academy',
+          email: 'referente@example.com',
           password: 'password123',
-          ruolo: 'admin'
+          ruolo: 'referente_academy'
         }
       ];
 
-      // Hash passwords before inserting
+      // Hash passwords
       for (let user of testUsers) {
         const salt = await bcrypt.genSalt(10);
         user.password = await bcrypt.hash(user.password, salt);
       }
 
-      await User.insertMany(testUsers);
+      const users = await User.insertMany(testUsers);
+
+      // Create courses
+      const corsi = await CorsoAcademy.insertMany([
+        {
+          titolo: 'Sicurezza Generale',
+          descrizione: 'Corso introduttivo sulla sicurezza nel lavoro',
+          categoriaId: categorie[0]._id,
+          durataOre: 8,
+          obbligatorio: true,
+          attivo: true
+        },
+        {
+          titolo: 'JavaScript Avanzato',
+          descrizione: 'Corso su JavaScript moderno e framework',
+          categoriaId: categorie[1]._id,
+          durataOre: 16,
+          obbligatorio: false,
+          attivo: true
+        },
+        {
+          titolo: 'Leadership Efficace',
+          descrizione: 'Tecniche di leadership per team leader',
+          categoriaId: categorie[2]._id,
+          durataOre: 12,
+          obbligatorio: false,
+          attivo: true
+        },
+        {
+          titolo: 'Inglese Commerciale',
+          descrizione: 'Inglese per il business',
+          categoriaId: categorie[3]._id,
+          durataOre: 20,
+          obbligatorio: false,
+          attivo: true
+        }
+      ]);
+
+      // Create assignments
+      const dataInizio = new Date();
+      const dataFine = new Date(dataInizio.getTime() + 30 * 24 * 60 * 60 * 1000); // 30 giorni
+
+      await AssegnazioneCorso.insertMany([
+        {
+          corsoId: corsi[0]._id,
+          dipendenteId: users[0]._id,
+          dataAssegnazione: dataInizio,
+          dataScadenza: dataFine,
+          stato: 'Assegnato'
+        },
+        {
+          corsoId: corsi[1]._id,
+          dipendenteId: users[0]._id,
+          dataAssegnazione: dataInizio,
+          dataScadenza: dataFine,
+          stato: 'Completato',
+          dataCompletamento: new Date(dataInizio.getTime() + 10 * 24 * 60 * 60 * 1000)
+        },
+        {
+          corsoId: corsi[2]._id,
+          dipendenteId: users[1]._id,
+          dataAssegnazione: dataInizio,
+          dataScadenza: dataFine,
+          stato: 'Assegnato'
+        },
+        {
+          corsoId: corsi[3]._id,
+          dipendenteId: users[1]._id,
+          dataAssegnazione: dataInizio,
+          dataScadenza: dataFine,
+          stato: 'Assegnato'
+        }
+      ]);
+
       console.log('✅ Database seeded successfully!');
       console.log('Test users created:');
       console.log('  - mario@example.com / password123 (dipendente)');
       console.log('  - francesca@example.com / password123 (dipendente)');
-      console.log('  - admin@example.com / password123 (admin)');
+      console.log('  - referente@example.com / password123 (referente_academy)');
     } else {
       console.log(`✅ Database already has ${userCount} users`);
     }
@@ -76,6 +163,9 @@ app.use(express.json());
 
 // Routes
 app.use('/api/utenti', authRoutes);
+app.use('/api/corsi', corsiRoutes);
+app.use('/api/assegnazioni-corsi', assegnazioniRoutes);
+app.use('/api/statistiche', statisticheRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

@@ -1,0 +1,127 @@
+.area-dipendente {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.area-dipendente h2 {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+}
+
+.filtri {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.filtri select {
+  padding: 0.5rem;
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.corsi-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.corso-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #667eea;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.corso-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.corso-card h3 {
+  color: #2c3e50;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.corso-card p {
+  color: #555;
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+.stato {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.stato-assegnato {
+  background-color: #d4edff;
+  color: #004ed3;
+}
+
+.stato-completato {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.stato-scaduto {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  transition: background-color 0.3s;
+}
+
+.btn-primary {
+  background-color: #667eea;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #5568d3;
+}
+
+.data-completamento {
+  color: #28a745;
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+.no-data {
+  text-align: center;
+  color: #999;
+  padding: 2rem;
+}
+
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .area-dipendente {
+    padding: 1rem;
+  }
+
+  .corsi-list {
+    grid-template-columns: 1fr;
+  }
+}
