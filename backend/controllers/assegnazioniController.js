@@ -28,7 +28,16 @@ exports.getAssegnazioni = async (req, res) => {
         .populate('dipendenteId', 'nome cognome email');
     }
 
-    const assegnazioni = await query;
+    let assegnazioni = await query;
+
+    const oggi = new Date();
+    assegnazioni = assegnazioni.map(ass => {
+      if (ass.stato !== 'Completato' && ass.stato !== 'Annullato' && ass.dataScadenza < oggi) {
+        ass.stato = 'Scaduto';
+      }
+      return ass;
+    });
+
     res.json({ success: true, data: assegnazioni });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
@@ -47,6 +56,11 @@ exports.getAssegnazioneById = async (req, res) => {
 
     if (req.userRole === 'dipendente' && assegnazione.dipendenteId._id.toString() !== req.userId) {
       return res.status(403).json({ success: false, message: 'Non autorizzato' });
+    }
+
+    const oggi = new Date();
+    if (assegnazione.stato !== 'Completato' && assegnazione.stato !== 'Annullato' && assegnazione.dataScadenza < oggi) {
+      assegnazione.stato = 'Scaduto';
     }
 
     res.json({ success: true, data: assegnazione });
@@ -112,8 +126,13 @@ exports.completaAssegnazione = async (req, res) => {
       return res.status(403).json({ success: false, message: 'Non autorizzato' });
     }
 
+    const dataCompletamento = new Date();
+    if (dataCompletamento < assegnazione.dataAssegnazione) {
+      return res.status(400).json({ success: false, message: 'La data di completamento non può essere precedente alla data di assegnazione' });
+    }
+
     assegnazione.stato = 'Completato';
-    assegnazione.dataCompletamento = new Date();
+    assegnazione.dataCompletamento = dataCompletamento;
     await assegnazione.save();
 
     await assegnazione.populate('corsoId');
